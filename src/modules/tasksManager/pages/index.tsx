@@ -1,5 +1,11 @@
+import { Header } from "../../../shared/components/header";
+
 const TasksManager = () => {
-	return <div>Tasks</div>;
+	return (
+		<div>
+			<Header />
+		</div>
+	);
 };
 
 export { TasksManager };
