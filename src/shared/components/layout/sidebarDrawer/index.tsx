@@ -27,7 +27,7 @@ const SidebarDrawer = ({ children, buttons }: Props) => {
 				<SheetTrigger asChild>{children}</SheetTrigger>
 				<SheetContent
 					side="left"
-					className="bg-primary-brand text-text-primary"
+					className="bg-primary-brand text-text-light"
 				>
 					<SheetHeader className="overflow-y-auto h-full overflow-x-hidden">
 						<SheetTitle className="flex justify-center items-center">

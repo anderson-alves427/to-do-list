@@ -5,7 +5,7 @@ import { Input } from "../ui/input";
 const Header = () => {
 	//mock
 	return (
-		<header className="bg-grayscale-light py-4 px-14 flex justify-between items-center">
+		<header className="w-full bg-grayscale-light h-[10%] px-14 flex justify-between items-center shadow-lg">
 			<h1 className="text-text-secondary font-bold text-2xl">TODOLIST</h1>
 
 			<Input className="max-w-96" placeholder="Pesquise por uma tarefa" />
