@@ -8,7 +8,7 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from "../../ui/sheet";
-import { ArrowRight, LucideLayoutDashboard } from "lucide-react";
+import { ArrowRight, LogOut } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { SidebarButton } from "@/shared/types/SidebarButton";
 import { Separator } from "../../ui/separator";
@@ -21,6 +21,7 @@ type Props = {
 const SidebarDrawer = ({ children, buttons }: Props) => {
 	const navigate = useNavigate();
 
+	//mock
 	return (
 		<div>
 			<Sheet modal={true}>
@@ -31,24 +32,10 @@ const SidebarDrawer = ({ children, buttons }: Props) => {
 				>
 					<SheetHeader className="overflow-y-auto h-full overflow-x-hidden">
 						<SheetTitle className="flex justify-center items-center">
+							<p className="text-text-light">Uma foto</p>
 							{/* <img src={AmareloLogo} alt="Logo" className="w-36 mt-2 mb-5" /> */}
 						</SheetTitle>
-						<div className="w-full flex justify-center items-center">
-							<button
-								onClick={() => navigate("/dashboard")}
-								className={cn(
-									"w-[95%] px-4 py-2 flex items-center justify-center rounded-full bg-secondary text-zinc-700 hover:bg-purple-800 hover:text-white hover:-translate-y-1 focus:-translate-y-1 focus:bg-secondary focus:text-white transition-all"
-								)}
-							>
-								<div className="flex items-center justify-center gap-2">
-									<span className="text-3xl">
-										<LucideLayoutDashboard className="text-white" />
-									</span>
-									<span className="text-lg text-zinc-50">Abrir dashboard</span>
-								</div>
-							</button>
-						</div>
-						<Separator className="bg-yellow-500" />
+						<Separator />
 						<SheetDescription className="flex flex-col justify-between h-full">
 							<div className="space-y-4 py-4">
 								{buttons.map(({ icon, label, path, disabled }) => (
@@ -56,8 +43,8 @@ const SidebarDrawer = ({ children, buttons }: Props) => {
 										key={path}
 										onClick={() => navigate(path)}
 										className={cn(
-											"w-[95%] px-4 py-2 flex items-center justify-between rounded-full text-text-light hover:bg-yellow-500 hover:translate-x-2 focus:translate-x-2 focus:scale-105 transition-all",
-											window.location.pathname === path && "bg-grayscale-light",
+											"w-[95%] px-4 py-2 flex items-center justify-between rounded-full text-text-light hover:bg-secondary-brand hover:translate-x-2 focus:translate-x-2 focus:scale-105 transition-all",
+											window.location.pathname === path && "bg-secondary-brand",
 											disabled &&
 												"hover:cursor-default  hover:bg-secondary-brand hover:text-text-primary hover:translate-x-0"
 										)}
@@ -69,6 +56,8 @@ const SidebarDrawer = ({ children, buttons }: Props) => {
 										<ArrowRight />
 									</button>
 								))}
+							</div>
+							<div className="flex flex-col items-center gap-4">
 								<button
 									onClick={() => console.log("Sair")}
 									className={cn(
@@ -77,14 +66,11 @@ const SidebarDrawer = ({ children, buttons }: Props) => {
 								>
 									<div className="flex items-center justify-start gap-4">
 										<span className="text-3xl">
-											<ArrowRight />
+											<LogOut />
 										</span>
 										<span className="text-lg ">Sair</span>
 									</div>
-									<ArrowRight />
 								</button>
-							</div>
-							<div className="flex flex-col items-center">
 								<p className="text-zinc-50 text-lg">{"Anderson mock"}</p>
 							</div>
 						</SheetDescription>
