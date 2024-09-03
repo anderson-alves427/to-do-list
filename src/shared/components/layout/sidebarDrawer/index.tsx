@@ -27,7 +27,7 @@ const SidebarDrawer = ({ children, buttons }: Props) => {
 				<SheetTrigger asChild>{children}</SheetTrigger>
 				<SheetContent
 					side="left"
-					className="bg-primary-brand text-text-light"
+					className="bg-primary-brand text-text-primary"
 				>
 					<SheetHeader className="overflow-y-auto h-full overflow-x-hidden">
 						<SheetTitle className="flex justify-center items-center">
@@ -56,10 +56,10 @@ const SidebarDrawer = ({ children, buttons }: Props) => {
 										key={path}
 										onClick={() => navigate(path)}
 										className={cn(
-											"w-[95%] px-4 py-2 flex items-center justify-between rounded-full text-text-primary hover:bg-yellow-500 hover:translate-x-2 focus:translate-x-2 focus:scale-105 transition-all",
-											window.location.pathname === path && "bg-yellow-500",
+											"w-[95%] px-4 py-2 flex items-center justify-between rounded-full text-text-light hover:bg-yellow-500 hover:translate-x-2 focus:translate-x-2 focus:scale-105 transition-all",
+											window.location.pathname === path && "bg-grayscale-light",
 											disabled &&
-												"hover:cursor-default text-yellow-700 hover:bg-primary-brand hover:translate-x-0"
+												"hover:cursor-default  hover:bg-secondary-brand hover:text-text-primary hover:translate-x-0"
 										)}
 									>
 										<div className="flex items-center justify-start gap-4">
@@ -72,7 +72,7 @@ const SidebarDrawer = ({ children, buttons }: Props) => {
 								<button
 									onClick={() => console.log("Sair")}
 									className={cn(
-										"w-[95%] px-4 py-2 flex items-center justify-between rounded-full text-text-primary hover:bg-yellow-500 hover:translate-x-2 focus:translate-x-2 focus:bg-tertiary transition-all"
+										"w-[95%] px-4 py-2 flex items-center justify-between rounded-full text-text-light hover:bg-secondary-brand hover:text-text-primary hover:translate-x-2 focus:translate-x-2 focus:bg-tertiary transition-all"
 									)}
 								>
 									<div className="flex items-center justify-start gap-4">
