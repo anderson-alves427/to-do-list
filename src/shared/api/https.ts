@@ -5,7 +5,7 @@ function httpClientBuilder() {
 	const client = axios.create({ baseURL });
 
 	client.interceptors.request.use((config) => {
-		const token = localStorage.getItem("@pep_access_token");
+		const token = localStorage.getItem("@todo-list-access_token");
 
 		if (token) {
 			config.headers.Authorization = `Bearer ${token}`;

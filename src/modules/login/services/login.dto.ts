@@ -1,12 +1,10 @@
+import { User } from "@/shared/interfaces/User";
+
 type LoginInputDto = {
 	username: string;
 	password: string;
 };
-type LoginOutputDto = {
-	id: number;
-	user: string;
-	name: number;
-	perfil: string;
+type LoginOutputDto = User & {
 	accessToken: string;
 };
 

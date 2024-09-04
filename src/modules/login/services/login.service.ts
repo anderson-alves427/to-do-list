@@ -15,7 +15,7 @@ class LoginService {
 		const { accessToken, ...userData } = result.data;
 
 		localStorage.setItem("@todo-list-access_token", accessToken);
-		localStorage.setItem("@todo-list-user_data", JSON.stringify(userData));
+		localStorage.setItem("@todo-list-user-data", JSON.stringify(userData));
 
 		return result.data;
 	}
