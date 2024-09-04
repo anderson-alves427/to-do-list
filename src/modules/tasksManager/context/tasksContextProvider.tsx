@@ -3,6 +3,7 @@ import { TasksContextType } from "./tasksContextType";
 import { GetGroupWithTasksOutputDto } from "../services/getGroupWithTasks/getGroupWithTasks.dto";
 import { errorHandler } from "@/shared/api/errorHandler";
 import { getGroupWithTasksService } from "../services/getGroupWithTasks/getGroupWithTasks.service";
+import { mocksTasks } from "../mocks/tasks";
 
 const TasksContext = createContext<TasksContextType>({} as TasksContextType);
 
@@ -18,13 +19,14 @@ const TasksContextProvider = ({ children }: { children: React.ReactNode }) => {
 	async function getTasks() {
 		//mock
 		try {
-			const response = await getGroupWithTasksService.execute({
-				page: 1,
-				size: 30,
-				id_user: "1",
-			});
-
-			setGroupWithTasks(response);
+			// const response = await getGroupWithTasksService.execute({
+			// 	page: 1,
+			// 	size: 30,
+			// 	id_user: "1",
+			// });
+			// setGroupWithTasks(response);
+			//mock
+			setGroupWithTasks(mocksTasks);
 		} catch (error) {
 			errorHandler(error);
 		}

@@ -1,43 +1,41 @@
 import { DragDropContext } from "react-beautiful-dnd";
 import { ColumnTask } from "../components/columnTask";
 import { LayoutTaksManager } from "../components/layoutTasksManager";
-import { tasksAfazer, tasksConcluido, tasksEmAndamento } from "../mocks/tasks";
 import { Button } from "@/shared/components/ui/button";
 import { Plus } from "lucide-react";
+import { useTasksContext } from "../context/useTaskContext";
+import { useEffect } from "react";
 
 const TasksManager = () => {
+	const { getTasks, groupWithTasks } = useTasksContext();
 	function onDragEnd(result: any) {
 		if (!result.destination) return;
 
 		if (result.destination.droppableId === "data-table") return;
-
-		console.log("data", result);
 	}
 
 	function onDragStart(result: any) {
 		console.log("data", result);
 	}
 
+	useEffect(() => {
+		getTasks();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	return (
 		<LayoutTaksManager>
 			<h2 className="text-2xl font-semibold">Listagem de atividades</h2>
 			<div className="flex gap-12 mt-10">
 				<DragDropContext onDragEnd={onDragEnd} onDragStart={onDragStart}>
-					<ColumnTask
-						title="A fazer"
-						keyDroppabled="fazer"
-						tasks={tasksAfazer}
-					/>
-					<ColumnTask
-						title="Em andamento"
-						keyDroppabled="fazendo"
-						tasks={tasksEmAndamento}
-					/>
-					<ColumnTask
-						title="Concluído"
-						keyDroppabled="concluido"
-						tasks={tasksConcluido}
-					/>
+					{groupWithTasks.value.data.map((groupWithTask) => (
+						<ColumnTask
+							key={groupWithTask.id}
+							title={groupWithTask.name}
+							keyDroppabled={groupWithTask.id}
+							tasks={groupWithTask.tasks}
+						/>
+					))}
 				</DragDropContext>
 			</div>
 			<div className="flex justify-center items-center mt-10 gap-2 shadow-lg">
