@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { errorHandler } from "@/shared/api/errorHandler";
 import { editTaskService } from "../services/editTask/editTask.service";
 import toast from "react-hot-toast";
+import { createTaskService } from "../services/createTask/createTask.service";
 
 export type TaskManagerModalProps = {
 	task?: GetTasksOutputDto;
@@ -28,6 +29,7 @@ function useTaskManagerModal({ task, type }: TaskManagerModalProps) {
 	async function onSubmit(data: TaskSchema) {
 		try {
 			if (type === "create") {
+				await createTaskService.execute(data);
 				toast.success("Tarefa registrada com sucesso");
 				return;
 			}
