@@ -31,13 +31,14 @@ function useTaskManagerModal({ task, type }: TaskManagerModalProps) {
 			if (type === "create") {
 				await createTaskService.execute(data);
 				toast.success("Tarefa registrada com sucesso");
-				return;
 			}
 
 			if (type === "edit" && task && task.id) {
 				await editTaskService.execute({ id: task.id, ...data });
 				toast.success("Tarefa editada com sucesso");
 			}
+
+			form.reset();
 		} catch (error) {
 			errorHandler(error);
 		}

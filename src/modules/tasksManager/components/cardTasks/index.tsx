@@ -1,6 +1,7 @@
 import { MessageSquareMore } from "lucide-react";
 import { TaskManagerModal } from "../taskManagerModal";
 import { GetTasksOutputDto } from "../../services/getTarefas/getTarefas.dto";
+import { DeleteTaskDialog } from "../deleteTaskDialog";
 
 type Props = {
 	task: GetTasksOutputDto;
@@ -12,7 +13,10 @@ const CardTasks = ({ task }: Props) => {
 			<div className="flex flex-col">
 				<div className="flex justify-between items-center">
 					<h3 className="text-lg font-semibold">{task.title}</h3>
-					<TaskManagerModal type="edit" task={task} />
+					<div className="flex gap-2 items-center">
+						<DeleteTaskDialog id={task.id} title={task.title} />
+						<TaskManagerModal type="edit" task={task} />
+					</div>
 				</div>
 				<span className="text-sm">{task.description}</span>
 			</div>
