@@ -3,6 +3,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { taskSchema, TaskSchema } from "../schemas/taskSchema";
 import { GetTasksOutputDto } from "../services/getTarefas/getTarefas.dto";
 import { useEffect } from "react";
+import { errorHandler } from "@/shared/api/errorHandler";
+import { editTaskService } from "../services/editTask/editTask.service";
+import toast from "react-hot-toast";
 
 export type TaskManagerModalProps = {
 	task?: GetTasksOutputDto;
@@ -23,7 +26,19 @@ function useTaskManagerModal({ task, type }: TaskManagerModalProps) {
 	const formErrors = form.formState.errors;
 
 	async function onSubmit(data: TaskSchema) {
-		console.log("data", data);
+		try {
+			if (type === "create") {
+				toast.success("Tarefa registrada com sucesso");
+				return;
+			}
+
+			if (type === "edit" && task && task.id) {
+				await editTaskService.execute({ id: task.id, ...data });
+				toast.success("Tarefa editada com sucesso");
+			}
+		} catch (error) {
+			errorHandler(error);
+		}
 	}
 
 	useEffect(() => {

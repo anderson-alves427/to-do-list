@@ -1,6 +1,6 @@
-import { http } from "@api/http";
 import { AxiosInstance } from "axios";
 import { EditTaskInputDto } from "./editTask.dto";
+import { http } from "@/shared/api/https";
 
 class EditTaskService {
 	constructor(private readonly api: AxiosInstance) {}

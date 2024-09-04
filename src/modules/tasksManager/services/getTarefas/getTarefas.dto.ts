@@ -1,5 +1,5 @@
 type GetTasksOutputDto = {
-	id: number;
+	id: string;
 	title: string;
 	description: string;
 	id_responsible: string;
