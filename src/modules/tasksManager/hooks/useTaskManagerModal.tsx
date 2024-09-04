@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { taskSchema, TaskSchema } from "../schemas/taskSchema";
 import { GetTasksOutputDto } from "../services/getTarefas/getTarefas.dto";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { errorHandler } from "@/shared/api/errorHandler";
 import { editTaskService } from "../services/editTask/editTask.service";
 import toast from "react-hot-toast";
@@ -23,8 +23,7 @@ function useTaskManagerModal({ task, type }: TaskManagerModalProps) {
 			title: "",
 		},
 	});
-
-	const formErrors = form.formState.errors;
+	const refTriggerButton = useRef<HTMLButtonElement>(null);
 
 	async function onSubmit(data: TaskSchema) {
 		try {
@@ -37,7 +36,7 @@ function useTaskManagerModal({ task, type }: TaskManagerModalProps) {
 				await editTaskService.execute({ id: task.id, ...data });
 				toast.success("Tarefa editada com sucesso");
 			}
-
+			refTriggerButton.current?.click();
 			form.reset();
 		} catch (error) {
 			errorHandler(error);
@@ -46,9 +45,7 @@ function useTaskManagerModal({ task, type }: TaskManagerModalProps) {
 
 	useEffect(() => {
 		function populateFormWithTask() {
-			console.log("Fora");
 			if (type === "edit" && task) {
-				console.log("Entrou");
 				form.setValue("title", task.title);
 				form.setValue("description", task.description);
 				form.setValue("id_responsible", task.id_responsible);
@@ -62,10 +59,10 @@ function useTaskManagerModal({ task, type }: TaskManagerModalProps) {
 
 	return {
 		form,
-		formErrors,
 		onSubmit,
 		task,
 		type,
+		refTriggerButton,
 	};
 }
 

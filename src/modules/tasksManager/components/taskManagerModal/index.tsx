@@ -31,11 +31,14 @@ import {
 } from "@/shared/components/ui/select";
 
 const TaskManagerModal = (props: TaskManagerModalProps) => {
-	const { form, onSubmit, type } = useTaskManagerModal(props);
+	const { form, onSubmit, type, refTriggerButton } = useTaskManagerModal(props);
 	return (
 		<Dialog>
 			<DialogTrigger>
-				<button className="rounded-full border-grayscale-black p-1 border">
+				<button
+					ref={refTriggerButton}
+					className="rounded-full border-grayscale-black p-1 border"
+				>
 					<Ellipsis size={18} />
 				</button>
 			</DialogTrigger>
@@ -133,7 +136,11 @@ const TaskManagerModal = (props: TaskManagerModalProps) => {
 								/>
 							</div>
 							<div className="col-span-4 flex justify-end gap-2 mt-4">
-								<Button type="button" variant="outline">
+								<Button
+									type="button"
+									variant="outline"
+									onClick={() => refTriggerButton.current?.click()}
+								>
 									Cancelar
 								</Button>
 								<Button type="submit">Salvar</Button>

@@ -15,11 +15,15 @@ import {
 } from "../../hooks/useDeleteTaskDialog";
 
 const DeleteTaskDialog = (props: UseDeleteTaskDialogProps) => {
-	const { title, handleClickConfirmDeleteTak } = useDeleteTaskDialog(props);
+	const { title, handleClickConfirmDeleteTak, refTriggerButton } =
+		useDeleteTaskDialog(props);
 	return (
 		<Dialog>
 			<DialogTrigger>
-				<button className="rounded-full border-grayscale-black p-1 border">
+				<button
+					ref={refTriggerButton}
+					className="rounded-full border-grayscale-black p-1 border"
+				>
 					<Trash size={18} />
 				</button>
 			</DialogTrigger>
@@ -37,7 +41,12 @@ const DeleteTaskDialog = (props: UseDeleteTaskDialogProps) => {
 					</DialogDescription>
 				</DialogHeader>
 				<DialogFooter className="mt-4">
-					<Button variant="outline">Cancelar</Button>
+					<Button
+						variant="outline"
+						onClick={() => refTriggerButton.current?.click()}
+					>
+						Cancelar
+					</Button>
 					<Button onClick={handleClickConfirmDeleteTak}>Confirmar</Button>
 				</DialogFooter>
 			</DialogContent>

@@ -1,6 +1,7 @@
 import { errorHandler } from "@/shared/api/errorHandler";
 import { deleteTaskService } from "../services/deleteTask/deleteTask.service";
 import toast from "react-hot-toast";
+import { useRef } from "react";
 
 export type UseDeleteTaskDialogProps = {
 	id: string;
@@ -8,10 +9,13 @@ export type UseDeleteTaskDialogProps = {
 };
 
 function useDeleteTaskDialog({ id, title }: UseDeleteTaskDialogProps) {
+	const refTriggerButton = useRef<HTMLButtonElement>(null);
+
 	async function handleClickConfirmDeleteTak() {
 		try {
 			await deleteTaskService.execute(id);
 			toast.success("Tarefa deletada com sucesso.");
+			refTriggerButton.current?.click();
 		} catch (error) {
 			errorHandler(error);
 		}
@@ -19,6 +23,7 @@ function useDeleteTaskDialog({ id, title }: UseDeleteTaskDialogProps) {
 	return {
 		title,
 		handleClickConfirmDeleteTak,
+		refTriggerButton,
 	};
 }
 
