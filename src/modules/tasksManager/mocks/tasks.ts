@@ -1,7 +1,9 @@
-const tasks = [
+import { GetTasksOutputDto } from "../services/getTarefas/getTarefas.dto";
+
+const tasksAfazer: GetTasksOutputDto[] = [
 	{
 		id: 1,
-		date: "08 Set 2024",
+		created_at: "08 Set 2024",
 		title: "Titulo",
 		description: "Descrição tarefa",
 		number_coments: 7,
@@ -9,7 +11,7 @@ const tasks = [
 	},
 	{
 		id: 2,
-		date: "08 Set 2024",
+		created_at: "08 Set 2024",
 		title: "Titulo",
 		description: "Descrição tarefa",
 		number_coments: 7,
@@ -17,7 +19,7 @@ const tasks = [
 	},
 	{
 		id: 3,
-		date: "08 Set 2024",
+		created_at: "08 Set 2024",
 		title: "Titulo",
 		description: "Descrição tarefa",
 		number_coments: 7,
@@ -25,7 +27,7 @@ const tasks = [
 	},
 	{
 		id: 4,
-		date: "08 Set 2024",
+		created_at: "08 Set 2024",
 		title: "Titulo",
 		description: "Descrição tarefa",
 		number_coments: 7,
@@ -33,4 +35,74 @@ const tasks = [
 	},
 ];
 
-export { tasks };
+const tasksEmAndamento: GetTasksOutputDto[] = [
+	{
+		id: 5,
+		created_at: "08 Set 2024",
+		title: "Titulo",
+		description: "Descrição tarefa",
+		number_coments: 7,
+		number_files: 7,
+	},
+	{
+		id: 6,
+		created_at: "08 Set 2024",
+		title: "Titulo",
+		description: "Descrição tarefa",
+		number_coments: 7,
+		number_files: 7,
+	},
+	{
+		id: 7,
+		created_at: "08 Set 2024",
+		title: "Titulo",
+		description: "Descrição tarefa",
+		number_coments: 7,
+		number_files: 7,
+	},
+	{
+		id: 8,
+		created_at: "08 Set 2024",
+		title: "Titulo",
+		description: "Descrição tarefa",
+		number_coments: 7,
+		number_files: 7,
+	},
+];
+
+const tasksConcluido: GetTasksOutputDto[] = [
+	{
+		id: 9,
+		created_at: "08 Set 2024",
+		title: "Titulo",
+		description: "Descrição tarefa",
+		number_coments: 7,
+		number_files: 7,
+	},
+	{
+		id: 10,
+		created_at: "08 Set 2024",
+		title: "Titulo",
+		description: "Descrição tarefa",
+		number_coments: 7,
+		number_files: 7,
+	},
+	{
+		id: 11,
+		created_at: "08 Set 2024",
+		title: "Titulo",
+		description: "Descrição tarefa",
+		number_coments: 7,
+		number_files: 7,
+	},
+	{
+		id: 12,
+		created_at: "08 Set 2024",
+		title: "Titulo",
+		description: "Descrição tarefa",
+		number_coments: 7,
+		number_files: 7,
+	},
+];
+
+export { tasksConcluido, tasksEmAndamento, tasksAfazer };

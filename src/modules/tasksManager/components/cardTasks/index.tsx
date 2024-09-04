@@ -1,7 +1,7 @@
 import { Ellipsis, MessageSquareMore } from "lucide-react";
 
 type Props = {
-	id: number;
+    id: number;
 	title: string;
 	description: string;
 	date: string;
