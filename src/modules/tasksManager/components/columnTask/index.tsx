@@ -1,13 +1,12 @@
-import { Plus } from "lucide-react";
 import { CardTasks } from "../cardTasks";
 import { Draggable, Droppable } from "react-beautiful-dnd";
-import { GetTasksOutputDto } from "../../services/getTarefas/getTarefas.dto";
 import { TaskManagerModal } from "../taskManagerModal";
+import { ListTask } from "../../services/getGroupWithTasks/getGroupWithTasks.dto";
 
 type Props = {
 	title: string;
 	keyDroppabled: string;
-	tasks: GetTasksOutputDto[];
+	tasks: ListTask[];
 };
 
 const ColumnTask = ({ title, keyDroppabled, tasks }: Props) => {

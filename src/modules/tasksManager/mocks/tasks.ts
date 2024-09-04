@@ -1,29 +1,28 @@
-import { GetTasksOutputDto } from "../services/getTarefas/getTarefas.dto";
+import { ListTask } from "../services/getGroupWithTasks/getGroupWithTasks.dto";
 
-const tasksAfazer: GetTasksOutputDto[] = [
+
+const tasksAfazer: ListTask[] = [
 	{
-		id: 1,
+		id: "1",
 		created_at: "08 Set 2024",
 		title: "Titulo",
 		description: "Descrição tarefa",
-		number_coments: 7,
-		number_files: 7,
+
 	},
 	{
-		id: 2,
+		id: "2",
 		created_at: "08 Set 2024",
 		title: "Titulo",
 		description: "Descrição tarefa",
 		number_coments: 7,
-		number_files: 7,
+		
 	},
 	{
-		id: 3,
+		id: "3",
 		created_at: "08 Set 2024",
 		title: "Titulo",
 		description: "Descrição tarefa",
 		number_coments: 7,
-		number_files: 7,
 	},
 	{
 		id: 4,
@@ -31,18 +30,16 @@ const tasksAfazer: GetTasksOutputDto[] = [
 		title: "Titulo",
 		description: "Descrição tarefa",
 		number_coments: 7,
-		number_files: 7,
 	},
 ];
 
-const tasksEmAndamento: GetTasksOutputDto[] = [
+const tasksEmAndamento: ListTask[] = [
 	{
 		id: 5,
 		created_at: "08 Set 2024",
 		title: "Titulo",
 		description: "Descrição tarefa",
 		number_coments: 7,
-		number_files: 7,
 	},
 	{
 		id: 6,
@@ -70,7 +67,7 @@ const tasksEmAndamento: GetTasksOutputDto[] = [
 	},
 ];
 
-const tasksConcluido: GetTasksOutputDto[] = [
+const tasksConcluido: GetGroupTasksOutputDto[] = [
 	{
 		id: 9,
 		created_at: "08 Set 2024",

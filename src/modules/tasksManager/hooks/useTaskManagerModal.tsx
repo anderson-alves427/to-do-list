@@ -1,15 +1,15 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { taskSchema, TaskSchema } from "../schemas/taskSchema";
-import { GetTasksOutputDto } from "../services/getTarefas/getTarefas.dto";
 import { useEffect, useRef } from "react";
 import { errorHandler } from "@/shared/api/errorHandler";
 import { editTaskService } from "../services/editTask/editTask.service";
 import toast from "react-hot-toast";
 import { createTaskService } from "../services/createTask/createTask.service";
+import { ListTask } from "../services/getGroupWithTasks/getGroupWithTasks.dto";
 
 export type TaskManagerModalProps = {
-	task?: GetTasksOutputDto;
+	task?: ListTask;
 	type: "create" | "edit";
 };
 

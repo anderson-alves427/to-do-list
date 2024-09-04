@@ -1,10 +1,10 @@
 import { MessageSquareMore } from "lucide-react";
 import { TaskManagerModal } from "../taskManagerModal";
-import { GetTasksOutputDto } from "../../services/getTarefas/getTarefas.dto";
 import { DeleteTaskDialog } from "../deleteTaskDialog";
+import { ListTask } from "../../services/getGroupWithTasks/getGroupWithTasks.dto";
 
 type Props = {
-	task: GetTasksOutputDto;
+	task: ListTask;
 };
 
 const CardTasks = ({ task }: Props) => {
