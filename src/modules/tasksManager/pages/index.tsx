@@ -2,6 +2,8 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { ColumnTask } from "../components/columnTask";
 import { LayoutTaksManager } from "../components/layoutTasksManager";
 import { tasksAfazer, tasksConcluido, tasksEmAndamento } from "../mocks/tasks";
+import { Button } from "@/shared/components/ui/button";
+import { Plus } from "lucide-react";
 
 const TasksManager = () => {
 	function onDragEnd(result: any) {
@@ -37,6 +39,14 @@ const TasksManager = () => {
 						tasks={tasksConcluido}
 					/>
 				</DragDropContext>
+			</div>
+			<div className="flex justify-center items-center mt-10 gap-2 shadow-lg">
+				<Button className="rounded-full" size="icon">
+					<Plus />{" "}
+				</Button>
+				<span className="text-sm text-secondary-brand font-semibold">
+					Carregar mais...
+				</span>
 			</div>
 		</LayoutTaksManager>
 	);
