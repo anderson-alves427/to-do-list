@@ -2,6 +2,7 @@ import { Plus } from "lucide-react";
 import { CardTasks } from "../cardTasks";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 import { GetTasksOutputDto } from "../../services/getTarefas/getTarefas.dto";
+import { TaskManagerModal } from "../taskManagerModal";
 
 type Props = {
 	title: string;
@@ -22,10 +23,7 @@ const ColumnTask = ({ title, keyDroppabled, tasks }: Props) => {
 						<div className="flex justify-between mb-4">
 							<h3>{title}</h3>
 							<div className="flex gap-2">
-								<button>
-									<Plus />
-								</button>
-								<p>Nova tarefa</p>
+								<TaskManagerModal type="create" />
 							</div>
 						</div>
 						{tasks.map((task, index) => (

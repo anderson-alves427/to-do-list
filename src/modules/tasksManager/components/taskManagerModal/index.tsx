@@ -6,7 +6,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/shared/components/ui/dialog";
-import { Ellipsis, Pencil } from "lucide-react";
+import { Ellipsis, FilePlus2, Pencil, Plus } from "lucide-react";
 import {
 	TaskManagerModalProps,
 	useTaskManagerModal,
@@ -35,19 +35,35 @@ const TaskManagerModal = (props: TaskManagerModalProps) => {
 	return (
 		<Dialog>
 			<DialogTrigger>
-				<button
-					ref={refTriggerButton}
-					className="rounded-full border-grayscale-black p-1 border"
-				>
-					<Ellipsis size={18} />
-				</button>
+				{type === "edit" ? (
+					<button
+						ref={refTriggerButton}
+						className="rounded-full border-grayscale-black p-1 border"
+					>
+						<Ellipsis size={18} />
+					</button>
+				) : (
+					<button className="flex items-center gap-2">
+						<Plus />
+						<p>Nova tarefa</p>
+					</button>
+				)}
 			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>
 						<div className="flex gap-2 items-center">
-							<Pencil />
-							<p>{type === "edit" ? "Editar tarefa" : "Registrar tarefa"}</p>
+							{type === "edit" ? (
+								<>
+									<Pencil />
+									<p>Editar tarefa</p>
+								</>
+							) : (
+								<>
+									<FilePlus2 />
+									<p>Registrar tarefa</p>
+								</>
+							)}
 						</div>
 					</DialogTitle>
 					<DialogDescription>
