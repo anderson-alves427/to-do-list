@@ -5,6 +5,7 @@ type TasksContextType = {
 		value: GetGroupWithTasksOutputDto;
 		set: React.Dispatch<React.SetStateAction<GetGroupWithTasksOutputDto>>;
 	};
+	getTasks(): Promise<void>;
 };
 
 export type { TasksContextType };
