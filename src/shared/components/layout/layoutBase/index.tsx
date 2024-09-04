@@ -54,7 +54,7 @@ const LayoutBase = ({ sidebarButtons = [], actionButton, children }: Props) => {
 						</button>
 					</SidebarDrawer>
 				</aside>
-				<div className="w-full">{children}</div>
+				<div className="w-full p-8">{children}</div>
 			</div>
 		</div>
 	);
