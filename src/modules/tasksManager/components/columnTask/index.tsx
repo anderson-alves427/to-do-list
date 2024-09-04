@@ -40,14 +40,7 @@ const ColumnTask = ({ title, keyDroppabled, tasks }: Props) => {
 										{...provided.dragHandleProps}
 										ref={provided.innerRef}
 									>
-										<CardTasks
-											date={task.created_at}
-											description={task.description}
-											number_coments={task.number_coments}
-											id={task.id}
-											number_files={task.number_files}
-											title={task.title}
-										/>
+										<CardTasks task={task} />
 									</div>
 								)}
 							</Draggable>

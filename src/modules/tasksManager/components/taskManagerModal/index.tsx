@@ -7,12 +7,13 @@ import {
 	DialogTrigger,
 } from "@/shared/components/ui/dialog";
 import { Ellipsis, Pencil } from "lucide-react";
-import { GetTasksOutputDto } from "../../services/getTarefas/getTarefas.dto";
-import { useTaskManagerModal } from "../../hooks/useTaskManagerModal";
+import {
+	TaskManagerModalProps,
+	useTaskManagerModal,
+} from "../../hooks/useTaskManagerModal";
 import {
 	Form,
 	FormControl,
-	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -29,13 +30,8 @@ import {
 	SelectValue,
 } from "@/shared/components/ui/select";
 
-type Props = {
-	tasks: GetTasksOutputDto;
-	type: "create" | "edit";
-};
-
-const TaskManagerModal = ({ tasks }: Props) => {
-	const { form, formErrors, onSubmit } = useTaskManagerModal();
+const TaskManagerModal = (props: TaskManagerModalProps) => {
+	const { form, onSubmit, type } = useTaskManagerModal(props);
 	return (
 		<Dialog>
 			<DialogTrigger>
@@ -48,11 +44,13 @@ const TaskManagerModal = ({ tasks }: Props) => {
 					<DialogTitle>
 						<div className="flex gap-2 items-center">
 							<Pencil />
-							<p>Editar tarefa</p>
+							<p>{type === "edit" ? "Editar tarefa" : "Registrar tarefa"}</p>
 						</div>
 					</DialogTitle>
 					<DialogDescription>
-						Clique no botão salvar para editar uma tarefa.
+						{type === "edit"
+							? "Clique no botão salvar para editar uma tarefa."
+							: "Clique no botão salvar para registrar uma nova tarefa."}
 					</DialogDescription>
 					<Form {...form}>
 						<form
@@ -134,11 +132,11 @@ const TaskManagerModal = ({ tasks }: Props) => {
 									)}
 								/>
 							</div>
-							<div className="col-span-4 flex justify-end gap-2">
+							<div className="col-span-4 flex justify-end gap-2 mt-4">
 								<Button type="button" variant="outline">
 									Cancelar
 								</Button>
-								<Button type="submit">Editar</Button>
+								<Button type="submit">Salvar</Button>
 							</div>
 						</form>
 					</Form>
