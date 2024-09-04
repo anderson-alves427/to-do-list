@@ -1,7 +1,8 @@
 import { Ellipsis, MessageSquareMore } from "lucide-react";
+import { TaskManagerModal } from "../taskManagerModal";
 
 type Props = {
-    id: number;
+	id: number;
 	title: string;
 	description: string;
 	date: string;
@@ -21,9 +22,7 @@ const CardTasks = ({
 			<div className="flex flex-col">
 				<div className="flex justify-between items-center">
 					<h3 className="text-lg font-semibold">{title}</h3>
-					<button className="rounded-full border-grayscale-black p-1 border">
-						<Ellipsis size={18} />
-					</button>
+					<TaskManagerModal />
 				</div>
 				<span className="text-sm">{description}</span>
 			</div>
