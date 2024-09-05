@@ -23,6 +23,7 @@ function useLogin() {
 			const result = await loginService.execute(data);
 			user.set(result);
 			navigate("/");
+			form.reset();
 		} catch (error) {
 			errorHandler(error);
 		}

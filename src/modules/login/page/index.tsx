@@ -1,12 +1,4 @@
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/shared/components/ui/card";
 import { useLogin } from "../hooks/useLogin";
-import { Plus } from "lucide-react";
 import {
 	Form,
 	FormControl,
@@ -18,6 +10,7 @@ import {
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import { LayoutLoginRegister } from "@/shared/components/layoutLoginRegister";
+import { Link } from "react-router-dom";
 
 const Login = () => {
 	const { form, onSubmit } = useLogin();
@@ -30,7 +23,7 @@ const Login = () => {
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className="w-full space-y-6"
+					className="w-full space-y-3"
 				>
 					<FormField
 						control={form.control}
@@ -52,7 +45,7 @@ const Login = () => {
 							<FormItem>
 								<FormLabel>Senha</FormLabel>
 								<FormControl>
-									<Input {...field} />
+									<Input {...field} type="password" />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -63,6 +56,14 @@ const Login = () => {
 					</Button>
 				</form>
 			</Form>
+			<div className="mt-4">
+				<Link to="/register" className="text-sm cursor-pointer">
+					Não possui um usuário?{" "}
+					<span className="text-secondary-brand font-semibold">
+						Registre-se agora.
+					</span>
+				</Link>
+			</div>
 		</LayoutLoginRegister>
 	);
 };
