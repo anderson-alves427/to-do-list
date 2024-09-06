@@ -5,16 +5,16 @@ import { useEffect } from "react";
 function useTasksManager() {
 	const { getTasks, groupWithTasks, getTasksGroup, groups } = useTasksContext();
 	const { user } = useUserContext();
+
+	//TODO MAKE REQUESTS
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	function onDragEnd(result: any) {
 		const { destination, source } = result;
 
-		// Se não houver destino ou o destino é o mesmo local de origem, não fazer nada
 		if (!destination) {
 			return;
 		}
 
-		// Caso o item foi movido para a mesma posição ou lista
 		if (
 			destination.droppableId === source.droppableId &&
 			destination.index === source.index
@@ -22,7 +22,6 @@ function useTasksManager() {
 			return;
 		}
 
-		// Encontrar a lista de origem e destino
 		const start = groupWithTasks.value.data.find(
 			(list) => list.id === source.droppableId
 		);
@@ -50,7 +49,6 @@ function useTasksManager() {
 			return;
 		}
 
-		// Mover o item entre listas diferentes
 		const startTasks = Array.from(start.tasks);
 		const [movedTask] = startTasks.splice(source.index, 1);
 
