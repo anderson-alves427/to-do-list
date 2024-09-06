@@ -6,6 +6,7 @@ import { Plus } from "lucide-react";
 import { useTasksContext } from "../context/useTaskContext";
 import { useEffect } from "react";
 import { useUserContext } from "@/shared/contexts/user/useUserContext";
+import { CreateGroupDialog } from "../components/createGroupDialog/createGroupDialog";
 
 const TasksManager = () => {
 	const { getTasks, groupWithTasks } = useTasksContext();
@@ -39,6 +40,9 @@ const TasksManager = () => {
 						/>
 					))}
 				</DragDropContext>
+				<div>
+					<CreateGroupDialog />
+				</div>
 			</div>
 			{groupWithTasks.value.data.length > 0 && (
 				<div className="flex justify-center items-center mt-10 gap-2 shadow-lg">
