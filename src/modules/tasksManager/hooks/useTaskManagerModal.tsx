@@ -7,6 +7,7 @@ import { editTaskService } from "../services/editTask/editTask.service";
 import toast from "react-hot-toast";
 import { createTaskService } from "../services/createTask/createTask.service";
 import { ListTask } from "../services/getGroupWithTasks/getGroupWithTasks.dto";
+import dayjs from "dayjs";
 
 export type TaskManagerModalProps = {
 	task?: ListTask;
@@ -19,7 +20,6 @@ function useTaskManagerModal({ task, type }: TaskManagerModalProps) {
 		defaultValues: {
 			deadline: "",
 			description: "",
-			id_responsible: "",
 			title: "",
 		},
 	});
@@ -48,8 +48,7 @@ function useTaskManagerModal({ task, type }: TaskManagerModalProps) {
 			if (type === "edit" && task) {
 				form.setValue("title", task.title);
 				form.setValue("description", task.description);
-				form.setValue("id_responsible", task.id_responsible);
-				form.setValue("deadline", task.deadline);
+				form.setValue("deadline", dayjs(task.deadline).format("YYYY-MM-DD"));
 			}
 		}
 

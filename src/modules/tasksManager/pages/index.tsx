@@ -5,9 +5,11 @@ import { Button } from "@/shared/components/ui/button";
 import { Plus } from "lucide-react";
 import { useTasksContext } from "../context/useTaskContext";
 import { useEffect } from "react";
+import { useUserContext } from "@/shared/contexts/user/useUserContext";
 
 const TasksManager = () => {
 	const { getTasks, groupWithTasks } = useTasksContext();
+	const { user } = useUserContext();
 	function onDragEnd(result: any) {
 		if (!result.destination) return;
 
@@ -19,7 +21,7 @@ const TasksManager = () => {
 	}
 
 	useEffect(() => {
-		getTasks();
+		getTasks(user.value.id);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -38,14 +40,16 @@ const TasksManager = () => {
 					))}
 				</DragDropContext>
 			</div>
-			<div className="flex justify-center items-center mt-10 gap-2 shadow-lg">
-				<Button className="rounded-full" size="icon">
-					<Plus />{" "}
-				</Button>
-				<span className="text-sm text-secondary-brand font-semibold">
-					Carregar mais...
-				</span>
-			</div>
+			{groupWithTasks.value.data.length > 0 && (
+				<div className="flex justify-center items-center mt-10 gap-2 shadow-lg">
+					<Button className="rounded-full" size="icon">
+						<Plus />{" "}
+					</Button>
+					<span className="text-sm text-secondary-brand font-semibold">
+						Carregar mais...
+					</span>
+				</div>
+			)}
 		</LayoutTaksManager>
 	);
 };

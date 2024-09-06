@@ -10,7 +10,7 @@ const errorHandler = (error: any, context?: string) => {
 			error.response.data.statusCode
 		}: ${error.response.data.message.join(" / ")}`;
 	} else if (error.response.data) {
-		err = `${error.response.data.statusCode}: ${error.response.data.message}`;
+		err = `${error.response.data.message}`;
 	} else {
 		err = "500: Erro interno do servidor";
 	}

@@ -2,6 +2,7 @@ import { MessageSquareMore } from "lucide-react";
 import { TaskManagerModal } from "../taskManagerModal";
 import { DeleteTaskDialog } from "../deleteTaskDialog";
 import { ListTask } from "../../services/getGroupWithTasks/getGroupWithTasks.dto";
+import dayjs from "dayjs";
 
 type Props = {
 	task: ListTask;
@@ -22,12 +23,12 @@ const CardTasks = ({ task }: Props) => {
 			</div>
 			<div className="flex justify-between">
 				<span className="bg-grayscale-light py-1  px-3 rounded-full text-secondary-brand text-sm font-semibold">
-					{task.created_at}
+					{dayjs(task.created_at).format("DD/MM/YYYY")}
 				</span>
 
 				<div className="flex gap-1 items-center">
 					<MessageSquareMore />
-					<span className="text-text-primary">{task.number_coments}</span>
+					<span className="text-text-primary">5</span>
 				</div>
 			</div>
 		</div>
