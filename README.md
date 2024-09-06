@@ -14,3 +14,5 @@ Para testar o processo de autorização, criar um suuário de teste com perfil A
 Executar os comandos:
 - npm i
 - npm run dev
+
+*Últimas atualizações na branch main
