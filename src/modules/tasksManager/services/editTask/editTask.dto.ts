@@ -1,8 +1,8 @@
 type EditTaskInputDto = {
 	id: string;
-	deadline?: string;
+	deadline?: Date | null;
+	group_task_id?: string;
 	description?: string;
-	id_responsible?: string;
 	title: string;
 };
 

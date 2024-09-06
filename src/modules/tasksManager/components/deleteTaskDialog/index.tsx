@@ -22,9 +22,9 @@ const DeleteTaskDialog = (props: UseDeleteTaskDialogProps) => {
 			<DialogTrigger>
 				<button
 					ref={refTriggerButton}
-					className="rounded-full border-grayscale-black p-1 border"
+					className="text-body-warning hover:scale-110"
 				>
-					<Trash size={18} />
+					<Trash size={20} />
 				</button>
 			</DialogTrigger>
 			<DialogContent>

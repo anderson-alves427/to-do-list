@@ -19,10 +19,9 @@ function useLogin() {
 
 	async function onSubmit(data: LoginSchema) {
 		try {
-			console.log(data);
 			const result = await loginService.execute(data);
 			user.set(result);
-			navigate("/");
+			navigate("/tasks");
 			form.reset();
 		} catch (error) {
 			errorHandler(error);

@@ -11,7 +11,7 @@ class GetGroupWithTasksService {
 	async execute(
 		params: GetGroupWithTasksInputDto
 	): Promise<GetGroupWithTasksOutputDto> {
-		const result = await this.api.get<GetGroupWithTasksOutputDto>(`/tasks`, {
+		const result = await this.api.get<GetGroupWithTasksOutputDto>(`/task`, {
 			params,
 		});
 		return result.data;

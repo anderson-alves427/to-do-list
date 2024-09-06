@@ -6,7 +6,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/shared/components/ui/dialog";
-import { Ellipsis, FilePlus2, Pencil, Plus } from "lucide-react";
+import { FilePlus2, Pencil, Plus } from "lucide-react";
 import {
 	TaskManagerModalProps,
 	useTaskManagerModal,
@@ -22,13 +22,6 @@ import {
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import { Textarea } from "@/shared/components/ui/textarea";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/shared/components/ui/select";
 
 const TaskManagerModal = (props: TaskManagerModalProps) => {
 	const { form, onSubmit, type, refTriggerButton } = useTaskManagerModal(props);
@@ -38,15 +31,15 @@ const TaskManagerModal = (props: TaskManagerModalProps) => {
 				{type === "edit" ? (
 					<button
 						ref={refTriggerButton}
-						className="rounded-full border-grayscale-black p-1 border"
+						className="text-primary-brand hover:scale-110"
 					>
-						<Ellipsis size={18} />
+						<Pencil size={20} />
 					</button>
 				) : (
-					<button className="flex items-center gap-2">
-						<Plus />
+					<Button variant="ghost" ref={refTriggerButton}>
+						<Plus size={20} />
 						<p>Nova tarefa</p>
-					</button>
+					</Button>
 				)}
 			</DialogTrigger>
 			<DialogContent>
@@ -111,32 +104,8 @@ const TaskManagerModal = (props: TaskManagerModalProps) => {
 									)}
 								/>
 							</div>
-							<div className="col-span-2">
-								<FormField
-									control={form.control}
-									name="id_responsible"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Responsável pela tarefa</FormLabel>
-											<Select
-												onValueChange={field.onChange}
-												defaultValue={field.value}
-											>
-												<FormControl>
-													<SelectTrigger>
-														<SelectValue placeholder="Selecione um responsável" />
-													</SelectTrigger>
-												</FormControl>
-												<SelectContent>
-													<SelectItem value="1">Anderson Alves</SelectItem>
-												</SelectContent>
-											</Select>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-							</div>
-							<div className="col-span-2">
+
+							<div className="col-span-4">
 								<FormField
 									control={form.control}
 									name="deadline"

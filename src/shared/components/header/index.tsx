@@ -1,9 +1,9 @@
 import { Bell, Calendar } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import dayjs from "dayjs";
 
 const Header = () => {
-	//mock
 	return (
 		<header className="w-full bg-grayscale-light h-[10%] px-14 flex justify-between items-center shadow-lg">
 			<h1 className="text-text-secondary font-bold text-2xl">TODOLIST</h1>
@@ -18,9 +18,9 @@ const Header = () => {
 					<Calendar size={18} />
 				</Button>
 				<div className="ml-10">
-					<p className="text-text-primary font-semibold">Terça-feira</p>
+					<p className="text-text-primary font-semibold">Seja-bem vindo!</p>
 					<span className="text-secondary-brand font-semibold text-sm">
-						03/09/2024
+						{dayjs().format("DD/MM/YYYY")}
 					</span>
 				</div>
 			</div>

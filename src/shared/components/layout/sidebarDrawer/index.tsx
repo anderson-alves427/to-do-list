@@ -20,8 +20,6 @@ type Props = {
 
 const SidebarDrawer = ({ children, buttons }: Props) => {
 	const navigate = useNavigate();
-
-	//mock
 	return (
 		<div>
 			<Sheet modal={true}>
@@ -32,8 +30,7 @@ const SidebarDrawer = ({ children, buttons }: Props) => {
 				>
 					<SheetHeader className="overflow-y-auto h-full overflow-x-hidden">
 						<SheetTitle className="flex justify-center items-center">
-							<p className="text-text-light">Uma foto</p>
-							{/* <img src={AmareloLogo} alt="Logo" className="w-36 mt-2 mb-5" /> */}
+							<p className="text-text-light">TODO LIST</p>
 						</SheetTitle>
 						<Separator />
 						<SheetDescription className="flex flex-col justify-between h-full">
@@ -59,7 +56,7 @@ const SidebarDrawer = ({ children, buttons }: Props) => {
 							</div>
 							<div className="flex flex-col items-center gap-4">
 								<button
-									onClick={() => console.log("Sair")}
+									onClick={() => navigate("/")}
 									className={cn(
 										"w-[95%] px-4 py-2 flex items-center justify-between rounded-full text-text-light hover:bg-secondary-brand hover:text-text-primary hover:translate-x-2 focus:translate-x-2 focus:bg-tertiary transition-all"
 									)}

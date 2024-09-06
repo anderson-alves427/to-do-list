@@ -5,7 +5,7 @@ class DeleteTaskService {
 	constructor(private readonly api: AxiosInstance) {}
 
 	async execute(id: string): Promise<void> {
-		await this.api.put(`/task/${id}`);
+		await this.api.delete(`/task/${id}`);
 	}
 }
 
