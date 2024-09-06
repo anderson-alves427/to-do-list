@@ -25,7 +25,7 @@ function useRegisterUser() {
 		try {
 			await createUserService.execute(data);
 			toast.success("Usuário registrado com sucesso.");
-			navigate("/login");
+			navigate("/");
 			form.reset();
 		} catch (error) {
 			errorHandler(error);

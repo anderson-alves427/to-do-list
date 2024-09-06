@@ -20,7 +20,7 @@ function httpClientBuilder() {
 		},
 		async function (error) {
 			if (error.response?.status === 401) {
-				window.location.href = "/login";
+				window.location.href = "/";
 			}
 
 			throw error;

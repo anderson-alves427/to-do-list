@@ -1,4 +1,3 @@
-import { ActionButton } from "@/shared/types/ActionButton";
 import { SidebarButton } from "@/shared/types/SidebarButton";
 import { ArrowRight, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -9,11 +8,10 @@ import { Header } from "../../header";
 
 type Props = {
 	sidebarButtons?: SidebarButton[];
-	actionButton?: ActionButton;
 	children: React.ReactNode;
 };
 
-const LayoutBase = ({ sidebarButtons = [], actionButton, children }: Props) => {
+const LayoutBase = ({ sidebarButtons = [], children }: Props) => {
 	const navigate = useNavigate();
 
 	return (
@@ -25,7 +23,7 @@ const LayoutBase = ({ sidebarButtons = [], actionButton, children }: Props) => {
 						<CustomTooltip key={index} side="right" text={item.label}>
 							<button
 								aria-label="teste"
-								// onClick={() => handleNavigateAndSave(item.path)}
+								onClick={() => navigate(item.path)}
 								disabled={item.disabled}
 								className={cn(
 									"w-8 h-8 flex items-center justify-center rounded-lg text-text-light text-2xl hover:bg-secondary-brand hover:text-white focus:bg-sky-500 focus:text-white transition-all  disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none",
@@ -40,7 +38,7 @@ const LayoutBase = ({ sidebarButtons = [], actionButton, children }: Props) => {
 					<CustomTooltip side="right" text="Sair">
 						<button
 							aria-label="teste"
-							// onClick={() => handleNavigateAndSave(item.path)}
+							onClick={() => navigate("/")}
 							className={cn(
 								"w-8 h-8 flex items-center justify-center rounded-lg text-text-light text-2xl hover:bg-secondary-brand hover:text-white focus:bg-sky-500 focus:text-white transition-all  disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
 							)}

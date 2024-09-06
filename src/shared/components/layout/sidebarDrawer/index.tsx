@@ -56,7 +56,7 @@ const SidebarDrawer = ({ children, buttons }: Props) => {
 							</div>
 							<div className="flex flex-col items-center gap-4">
 								<button
-									onClick={() => console.log("Sair")}
+									onClick={() => navigate("/")}
 									className={cn(
 										"w-[95%] px-4 py-2 flex items-center justify-between rounded-full text-text-light hover:bg-secondary-brand hover:text-text-primary hover:translate-x-2 focus:translate-x-2 focus:bg-tertiary transition-all"
 									)}

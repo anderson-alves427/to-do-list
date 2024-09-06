@@ -83,7 +83,7 @@ const RegisterUser = () => {
 				</form>
 			</Form>
 			<div className="mt-4">
-				<Link to="/login" className="text-sm cursor-pointer">
+				<Link to="/" className="text-sm cursor-pointer">
 					Já possui um usuário?{" "}
 					<span className="text-secondary-brand font-semibold">
 						Volte para o login.

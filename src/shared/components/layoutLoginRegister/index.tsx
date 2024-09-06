@@ -32,7 +32,7 @@ const LayoutLoginRegister = ({ children, description, title }: Props) => {
 						TODO LIST
 					</p>
 					<p className="flex text-text-light font-semibold px-20 2xl:text-3xl lg:text-2xl">
-						Gerenciamento de tarefas personalizado para você
+						Gerenciamento de tarefas personalizado para você.
 					</p>
 				</div>
 				<Plus className="absolute right-0 bottom-6 text-[15rem] text-text-light opacity-30" />

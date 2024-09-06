@@ -3,7 +3,7 @@ import { TasksManager } from "../pages";
 
 const tasksManagerRoutes: RouteObject[] = [
 	{
-		path: "/",
+		path: "/tasks",
 		element: <TasksManager />,
 	},
 ];
