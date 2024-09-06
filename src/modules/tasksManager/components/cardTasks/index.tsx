@@ -6,9 +6,10 @@ import dayjs from "dayjs";
 
 type Props = {
 	task: ListTask;
+	group_id: string;
 };
 
-const CardTasks = ({ task }: Props) => {
+const CardTasks = ({ task, group_id }: Props) => {
 	return (
 		<div className="w-full h-32 flex flex-col p-4 rounded-lg border border-zinc-200 shadow-lg justify-between">
 			<div className="flex flex-col">
@@ -16,7 +17,7 @@ const CardTasks = ({ task }: Props) => {
 					<h3 className="text font-semibold">{task.title}</h3>
 					<div className="flex gap-2 items-center">
 						<DeleteTaskDialog id={task.id} title={task.title} />
-						<TaskManagerModal type="edit" task={task} />
+						<TaskManagerModal type="edit" task={task} group_id={group_id} />
 					</div>
 				</div>
 				<span className="text-sm text-zinc-500">{task.description}</span>

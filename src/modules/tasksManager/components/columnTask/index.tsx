@@ -22,7 +22,7 @@ const ColumnTask = ({ title, keyDroppabled, tasks }: Props) => {
 						<div className="flex justify-between mb-4">
 							<h3 className="font-semibold text-zinc-600 text-lg">{title}</h3>
 							<div className="flex gap-2">
-								<TaskManagerModal type="create" />
+								<TaskManagerModal type="create" group_id={keyDroppabled} />
 							</div>
 						</div>
 						{tasks.length > 0 ? (
@@ -38,7 +38,7 @@ const ColumnTask = ({ title, keyDroppabled, tasks }: Props) => {
 											{...provided.dragHandleProps}
 											ref={provided.innerRef}
 										>
-											<CardTasks task={task} />
+											<CardTasks task={task} group_id={keyDroppabled} />
 										</div>
 									)}
 								</Draggable>

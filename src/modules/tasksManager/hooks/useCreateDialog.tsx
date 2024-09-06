@@ -5,8 +5,10 @@ import { errorHandler } from "@/shared/api/errorHandler";
 import { createGroupTaskService } from "../services/createGroupTask/createGroupTask.service";
 import { useRef } from "react";
 import toast from "react-hot-toast";
+import { useTasksContext } from "../context/useTaskContext";
 
 function useCreateDialog() {
+	const { getTasksGroup } = useTasksContext();
 	const form = useForm<GroupSchema>({
 		resolver: zodResolver(groupSchema),
 		defaultValues: {
@@ -20,6 +22,7 @@ function useCreateDialog() {
 			await createGroupTaskService.execute(data.name);
 			form.reset();
 			toast.success("Grupo criado com sucesso");
+			getTasksGroup();
 			refTriggerButton.current?.click();
 		} catch (error) {
 			errorHandler(error);

@@ -8,13 +8,18 @@ import toast from "react-hot-toast";
 import { createTaskService } from "../services/createTask/createTask.service";
 import { ListTask } from "../services/getGroupWithTasks/getGroupWithTasks.dto";
 import dayjs from "dayjs";
+import { useUserContext } from "@/shared/contexts/user/useUserContext";
+import { useTasksContext } from "../context/useTaskContext";
 
 export type TaskManagerModalProps = {
 	task?: ListTask;
 	type: "create" | "edit";
+	group_id: string;
 };
 
-function useTaskManagerModal({ task, type }: TaskManagerModalProps) {
+function useTaskManagerModal({ task, type, group_id }: TaskManagerModalProps) {
+	const { user } = useUserContext();
+	const { getTasks } = useTasksContext();
 	const form = useForm<TaskSchema>({
 		resolver: zodResolver(taskSchema),
 		defaultValues: {
@@ -28,15 +33,26 @@ function useTaskManagerModal({ task, type }: TaskManagerModalProps) {
 	async function onSubmit(data: TaskSchema) {
 		try {
 			if (type === "create") {
-				await createTaskService.execute(data);
+				await createTaskService.execute({
+					...data,
+					user_id: user.value.id,
+					group_task_id: group_id,
+
+					deadline: dayjs(data.deadline).toDate(),
+				});
 				toast.success("Tarefa registrada com sucesso");
 			}
 
 			if (type === "edit" && task && task.id) {
-				await editTaskService.execute({ id: task.id, ...data });
+				await editTaskService.execute({
+					...data,
+					id: task.id,
+					deadline: dayjs(data.deadline).toDate(),
+				});
 				toast.success("Tarefa editada com sucesso");
 			}
 			refTriggerButton.current?.click();
+			getTasks(user.value.id);
 			form.reset();
 		} catch (error) {
 			errorHandler(error);

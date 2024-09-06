@@ -6,7 +6,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/shared/components/ui/dialog";
-import { Ellipsis, FilePlus2, Pencil, Plus } from "lucide-react";
+import { FilePlus2, Pencil, Plus } from "lucide-react";
 import {
 	TaskManagerModalProps,
 	useTaskManagerModal,
@@ -36,7 +36,7 @@ const TaskManagerModal = (props: TaskManagerModalProps) => {
 						<Pencil size={20} />
 					</button>
 				) : (
-					<Button variant="ghost">
+					<Button variant="ghost" ref={refTriggerButton}>
 						<Plus size={20} />
 						<p>Nova tarefa</p>
 					</Button>

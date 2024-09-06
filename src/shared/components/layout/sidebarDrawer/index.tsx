@@ -20,8 +20,6 @@ type Props = {
 
 const SidebarDrawer = ({ children, buttons }: Props) => {
 	const navigate = useNavigate();
-
-	//mock
 	return (
 		<div>
 			<Sheet modal={true}>
@@ -32,8 +30,7 @@ const SidebarDrawer = ({ children, buttons }: Props) => {
 				>
 					<SheetHeader className="overflow-y-auto h-full overflow-x-hidden">
 						<SheetTitle className="flex justify-center items-center">
-							<p className="text-text-light">Uma foto</p>
-							{/* <img src={AmareloLogo} alt="Logo" className="w-36 mt-2 mb-5" /> */}
+							<p className="text-text-light">TODO LIST</p>
 						</SheetTitle>
 						<Separator />
 						<SheetDescription className="flex flex-col justify-between h-full">

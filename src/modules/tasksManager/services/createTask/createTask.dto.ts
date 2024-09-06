@@ -1,8 +1,9 @@
 type CreateTaskInputDto = {
-	deadline?: string;
-	description?: string;
-	id_responsible?: string;
+	deadline?: Date | null;
+	description: string;
+	group_task_id: string;
 	title: string;
+	user_id: string;
 };
 
 export type { CreateTaskInputDto };
