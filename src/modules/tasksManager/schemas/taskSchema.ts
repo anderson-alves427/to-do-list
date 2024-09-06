@@ -5,7 +5,7 @@ const taskSchema = z.object({
 	description: z
 		.string()
 		.min(5, "Uma descrição deve ter no mínimo 3 caracteres"),
-	deadline: z.optional(z.string()),
+	deadline: z.string().length(10, "Insira uma data válida"),
 });
 
 type TaskSchema = z.infer<typeof taskSchema>;
