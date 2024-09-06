@@ -31,15 +31,15 @@ const TaskManagerModal = (props: TaskManagerModalProps) => {
 				{type === "edit" ? (
 					<button
 						ref={refTriggerButton}
-						className="rounded-full border-grayscale-black p-1 border"
+						className="text-primary-brand hover:scale-110"
 					>
-						<Ellipsis size={18} />
+						<Pencil size={20} />
 					</button>
 				) : (
-					<button className="flex items-center gap-2">
-						<Plus />
+					<Button variant="ghost">
+						<Plus size={20} />
 						<p>Nova tarefa</p>
-					</button>
+					</Button>
 				)}
 			</DialogTrigger>
 			<DialogContent>

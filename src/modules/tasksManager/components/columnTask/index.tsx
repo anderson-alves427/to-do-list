@@ -16,11 +16,11 @@ const ColumnTask = ({ title, keyDroppabled, tasks }: Props) => {
 				<div
 					{...provided.droppableProps}
 					ref={provided.innerRef}
-					className="flex flex-col gap-4 border border-grayscale-black rounded-lg border-dashed p-4"
+					className="w-80 flex flex-col gap-4 border-2 border-b-zinc-600 rounded-lg border-dashed p-4"
 				>
 					<>
 						<div className="flex justify-between mb-4">
-							<h3>{title}</h3>
+							<h3 className="font-semibold text-zinc-600 text-lg">{title}</h3>
 							<div className="flex gap-2">
 								<TaskManagerModal type="create" />
 							</div>
@@ -44,7 +44,9 @@ const ColumnTask = ({ title, keyDroppabled, tasks }: Props) => {
 								</Draggable>
 							))
 						) : (
-							<div>Sem tarefas para listar...</div>
+							<div className="flexjustify-center">
+								Sem tarefas para listar...
+							</div>
 						)}
 
 						{provided.placeholder}

@@ -5,7 +5,9 @@ class CreateGroupTaskService {
 	constructor(private readonly api: AxiosInstance) {}
 
 	async execute(name: string): Promise<void> {
-		await this.api.post(`/group-task`, { name });
+		await this.api.post(`/group-task`, {
+			name: name,
+		});
 	}
 }
 

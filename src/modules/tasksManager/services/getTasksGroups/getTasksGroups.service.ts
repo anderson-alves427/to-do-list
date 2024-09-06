@@ -7,7 +7,7 @@ class GetTasksgroupService {
 	constructor(private readonly api: AxiosInstance) {}
 
 	async execute(): Promise<GetTasksGroupsOutput[]> {
-		const result = await this.api.get<GetTasksGroupsOutput[]>(`/groups-task`);
+		const result = await this.api.get<GetTasksGroupsOutput[]>(`/group-task`);
 		return result.data;
 	}
 }
