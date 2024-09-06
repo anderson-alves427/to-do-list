@@ -5,7 +5,11 @@ type LoginInputDto = {
 	password: string;
 };
 type LoginOutputDto = User & {
-	accessToken: string;
+	id: string;
+	name: string;
+	role: "BASIC_MEMBER" | "ADMIN";
+	created_at: Date;
+	token: string;
 };
 
 export type { LoginInputDto, LoginOutputDto };

@@ -8,13 +8,13 @@ class LoginService {
 
 	async execute(data: LoginInputDto): Promise<LoginOutputDto> {
 		const result = await this.api.post<LoginOutputDto>(
-			baseURL + "/auth/login",
+			baseURL + "/authenticate",
 			data
 		);
 
-		const { accessToken, ...userData } = result.data;
+		const { token, ...userData } = result.data;
 
-		localStorage.setItem("@todo-list-access_token", accessToken);
+		localStorage.setItem("@todo-list-access_token", token);
 		localStorage.setItem("@todo-list-user-data", JSON.stringify(userData));
 
 		return result.data;
