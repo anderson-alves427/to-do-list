@@ -35,7 +35,6 @@ function useTaskManagerModal({ task, type, group_id }: TaskManagerModalProps) {
 			if (type === "create") {
 				await createTaskService.execute({
 					...data,
-					user_id: user.value.id,
 					group_task_id: group_id,
 
 					deadline: dayjs(data.deadline).toDate(),
