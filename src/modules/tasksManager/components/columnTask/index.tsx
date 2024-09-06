@@ -25,23 +25,27 @@ const ColumnTask = ({ title, keyDroppabled, tasks }: Props) => {
 								<TaskManagerModal type="create" />
 							</div>
 						</div>
-						{tasks.map((task, index) => (
-							<Draggable
-								key={task.id}
-								draggableId={task.id.toString()}
-								index={index}
-							>
-								{(provided) => (
-									<div
-										{...provided.draggableProps}
-										{...provided.dragHandleProps}
-										ref={provided.innerRef}
-									>
-										<CardTasks task={task} />
-									</div>
-								)}
-							</Draggable>
-						))}
+						{tasks.length > 0 ? (
+							tasks.map((task, index) => (
+								<Draggable
+									key={task.id}
+									draggableId={task.id.toString()}
+									index={index}
+								>
+									{(provided) => (
+										<div
+											{...provided.draggableProps}
+											{...provided.dragHandleProps}
+											ref={provided.innerRef}
+										>
+											<CardTasks task={task} />
+										</div>
+									)}
+								</Draggable>
+							))
+						) : (
+							<div>Sem tarefas para listar...</div>
+						)}
 
 						{provided.placeholder}
 					</>

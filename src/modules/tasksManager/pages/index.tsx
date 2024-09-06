@@ -9,7 +9,7 @@ import { useUserContext } from "@/shared/contexts/user/useUserContext";
 import { CreateGroupDialog } from "../components/createGroupDialog/createGroupDialog";
 
 const TasksManager = () => {
-	const { getTasks, groupWithTasks } = useTasksContext();
+	const { getTasks, groupWithTasks, getTasksGroup, groups } = useTasksContext();
 	const { user } = useUserContext();
 	function onDragEnd(result: any) {
 		if (!result.destination) return;
@@ -22,6 +22,7 @@ const TasksManager = () => {
 	}
 
 	useEffect(() => {
+		getTasksGroup();
 		getTasks(user.value.id);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -31,14 +32,20 @@ const TasksManager = () => {
 			<h2 className="text-2xl font-semibold">Listagem de atividades</h2>
 			<div className="flex gap-12 mt-10">
 				<DragDropContext onDragEnd={onDragEnd} onDragStart={onDragStart}>
-					{groupWithTasks.value.data.map((groupWithTask) => (
-						<ColumnTask
-							key={groupWithTask.id}
-							title={groupWithTask.name}
-							keyDroppabled={groupWithTask.id}
-							tasks={groupWithTask.tasks}
-						/>
-					))}
+					{groups.value.map((group) => {
+						const groupData = groupWithTasks.value.data.find(
+							(itemGroup) => itemGroup.id === group.id
+						);
+
+						return (
+							<ColumnTask
+								key={group.id}
+								title={group.name}
+								keyDroppabled={group.id}
+								tasks={groupData ? groupData.tasks : []}
+							/>
+						);
+					})}
 				</DragDropContext>
 				<div>
 					<CreateGroupDialog />
